@@ -28,7 +28,7 @@ class StudentRequest extends FormRequest
         return [
             'first-name' => 'required|string|max:255|regex:/^\p{L}+$/u',
             'surename' => 'required|string|max:255|regex:/^\p{L}+$/u',
-            'email' => ['email', 'max:255', 'nullable', Rule::unique('users', 'email')->ignore($student->user_id)
+            'email' => ['email', 'max:255', 'nullable', Rule::unique('users', 'email')->ignore($student?->user_id)
                 ->whereNull('deleted_at')],
             'specialization' => 'required|exists:specializations,id',
             'birth_date' => 'required|date|before:today',
